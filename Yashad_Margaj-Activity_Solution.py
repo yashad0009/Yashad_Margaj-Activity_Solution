@@ -1,4 +1,3 @@
-#creating a class for code reusability
 class ParkingLotManager:
     #a function to initialize the required variables
     def __init__(self):
@@ -22,11 +21,13 @@ class ParkingLotManager:
 
     #a function to vacate a parking slot
     def vacate_a_slot(self, slot):
-        if self.parking_lot[slot] == 0:
-            return 'Slot already vacant.'
-        res = 'Slot number {} vacated, the car with vehicle registration number {} left the space, the driver of the car was of age {}'.format(slot, self.parking_lot[slot][0], self.parking_lot[slot][1])
-        self.parking_lot[slot] = 0
-        return res
+        if self.parking_lot.get(slot) != None:
+            if self.parking_lot[slot] == 0:
+                return 'Slot already vacant.'
+            res = 'Slot number {} vacated, the car with vehicle registration number {} left the space, the driver of the car was of age {}'.format(slot, self.parking_lot[slot][0], self.parking_lot[slot][1])
+            self.parking_lot[slot] = 0
+            return res
+        return 'Currently, no such slot with the specified slot number is present in the parking lot'
 
     #a function to print the parking slot number, considering the vehicle registration number
     def print_slot_number(self, num):
